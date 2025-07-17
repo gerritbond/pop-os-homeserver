@@ -1,4 +1,2 @@
 include:
   - ./backbone-services.yml
-  - ./prompt-management-services.yml
-  - ./agentic-services.yml

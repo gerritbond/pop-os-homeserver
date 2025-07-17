@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# Generated DBeaver connections
+dbeaver-connections.csv
+
+# Docker volumes
+postgres_data/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp 
