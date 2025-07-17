@@ -1,0 +1,48 @@
+services:
+  # Open WebUI - AI Chat Interface
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:ollama
+    container_name: open-webui
+    restart: always
+    ports:
+      - "3000:8080"
+    environment:
+      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - WEBUI_SECRET_KEY=your-secret-key-here
+      - DEFAULT_USER_ROLE=admin
+      - ENABLE_SIGNUP=true
+      - ENABLE_LOGIN_FORM=true
+    volumes:
+      - ollama:/root/.ollama
+      - open-webui:/app/backend/data
+    networks:
+      - ai-network
+
+  # # Weaviate - Vector Database with GraphQL (Multimodal Support)
+  # weaviate:
+  #   image: semitechnologies/weaviate:1.22.4
+  #   container_name: weaviate
+  #   restart: unless-stopped
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - QUERY_DEFAULTS_LIMIT=25
+  #     - AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED=true
+  #     - PERSISTENCE_DATA_PATH=/var/lib/weaviate
+  #     - DEFAULT_VECTORIZER_MODULE=none
+  #     - ENABLE_MODULES=text2vec-openai,text2vec-cohere,text2vec-huggingface,ref2vec-centroid,generative-openai,qna-openai,img2vec-neural,multi2vec-clip,multi2vec-bind
+  #     - CLUSTER_HOSTNAME=node1
+  #   volumes:
+  #     - weaviate-data:/var/lib/weaviate
+  #   networks:
+  #     - ai-network
+
+volumes:
+  open-webui:
+  ollama:
+  # weaviate-data:
+
+networks:
+  ai-network:
+    driver: bridge
+  
