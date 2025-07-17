@@ -8,7 +8,7 @@ This setup provides a complete AI/LLM stack with the following components:
 
 - **Open WebUI**: Modern web interface for chatting with LLMs
 - **Weaviate**: Vector database with multimodal support for RAG applications
-- **Document Processor**: Optional service for ingesting and processing documents
+- **RAG API Server**: FastAPI service providing RAG functionality
 - **MCP**: Model Control Point for interfacing with external LLM services
 
 ## 🚀 Quick Start
@@ -37,6 +37,7 @@ This setup provides a complete AI/LLM stack with the following components:
 3. Access the services:
    - **Open WebUI**: http://localhost:3000
    - **Weaviate Console**: http://localhost:8080/v1/console
+   - **RAG API**: http://localhost:8000
    - **MCP API**: http://localhost:5000
 
 ---

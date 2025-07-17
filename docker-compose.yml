@@ -1,3 +1,10 @@
+# This docker-compose file is to spin up an environment for an AI focused home server.
+# Includes the following:
+# Open WebUI - AI Chat Interface
+# Weaviate - Vector Database
+# Langfuse, and supporting services - Monitoring, Tracing, Prompt Management
+# Mastra - AI Agentic Framework 
+
 services:
   # Open WebUI - AI Chat Interface
   open-webui:
@@ -40,7 +47,7 @@ services:
 volumes:
   open-webui:
   ollama:
-  # weaviate-data:  
+  # weaviate-data:
 
 networks:
   ai-network:
