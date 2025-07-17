@@ -1,2 +1,3 @@
 include:
   - ./services/postgres/postgres.yml
+  - ./services/redis/redis.yml
