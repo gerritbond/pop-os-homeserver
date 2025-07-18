@@ -11,10 +11,17 @@ services:
       - DEFAULT_USER_ROLE=${OPEN_WEBUI_DEFAULT_USER_ROLE}
       - ENABLE_SIGNUP=${OPEN_WEBUI_ENABLE_SIGNUP}
       - ENABLE_LOGIN_FORM=${OPEN_WEBUI_ENABLE_LOGIN_FORM}
+      - DATABASE_URL=${OPEN_WEBUI_DATABASE_URL}
     volumes:
       - open-webui:/app/backend/data
     networks:
       - homeserver-network
+    # These are optional depending on your configuration.
+    depends_on:
+      postgres:
+        condition: service_healthy
+      clickhouse:
+        condition: service_healthy
 
 volumes:
   open-webui:

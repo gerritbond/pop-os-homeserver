@@ -1,8 +1,8 @@
 #!/bin/bash
-# Script to generate DBeaver connections CSV from .env file
+# Script to generate DBeaver connections CSV from PostgreSQL service .env file
 # Usage: ./scripts/generate-dbeaver.sh
 
-echo "Generating DBeaver connections from .env file..."
+echo "Generating DBeaver connections from PostgreSQL service .env file..."
 
 # Get the script directory and project root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
