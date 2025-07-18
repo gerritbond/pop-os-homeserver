@@ -22,7 +22,7 @@ services:
       DB_3_USER: ${DB_3_USER:-mastra}
       DB_3_PASSWORD: ${DB_3_PASSWORD:-mastra}
     ports:
-      - 5432:5432
+      - ${POSTGRES_PORT:-5432}:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./create-databases.sh:/docker-entrypoint-initdb.d/create-databases.sh
