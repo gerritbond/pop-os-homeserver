@@ -1,0 +1,20 @@
+services:
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:ollama
+    container_name: open-webui
+    restart: always
+    ports:
+      - ${OPEN_WEBUI_PORT:-3000}:8080
+    environment:
+      - OLLAMA_BASE_URL=${OLLAMA_BASE_URL}
+      - WEBUI_SECRET_KEY=${OPEN_WEBUI_SECRET_KEY}
+      - DEFAULT_USER_ROLE=${OPEN_WEBUI_DEFAULT_USER_ROLE}
+      - ENABLE_SIGNUP=${OPEN_WEBUI_ENABLE_SIGNUP}
+      - ENABLE_LOGIN_FORM=${OPEN_WEBUI_ENABLE_LOGIN_FORM}
+    volumes:
+      - open-webui:/app/backend/data
+    networks:
+      - homeserver-network
+
+volumes:
+  open-webui:

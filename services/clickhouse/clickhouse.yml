@@ -4,9 +4,9 @@ services:
     restart: always
     user: "101:101"
     environment:
-      CLICKHOUSE_DB: default
-      CLICKHOUSE_USER: clickhouse
-      CLICKHOUSE_PASSWORD: clickhouse # CHANGEME
+      CLICKHOUSE_DB: ${CLICKHOUSE_DB:-default}
+      CLICKHOUSE_USER: ${CLICKHOUSE_USER:-clickhouse}
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse}
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - clickhouse_logs:/var/log/clickhouse-server
@@ -19,6 +19,8 @@ services:
       timeout: 5s
       retries: 10
       start_period: 1s
+    networks:
+      - homeserver-network
 
 volumes:
   clickhouse_data:

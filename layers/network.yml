@@ -1,0 +1,4 @@
+# Isolating network configuration in case we want to make it more complicated
+networks:
+  homeserver-network:
+    driver: bridge

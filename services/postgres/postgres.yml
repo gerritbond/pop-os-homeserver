@@ -26,6 +26,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./create-databases.sh:/docker-entrypoint-initdb.d/create-databases.sh
+    networks:
+      - homeserver-network
 
 volumes:
   postgres_data:
