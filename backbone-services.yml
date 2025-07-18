@@ -2,3 +2,4 @@ include:
   - ./services/postgres/postgres.yml
   - ./services/redis/redis.yml
   - ./services/clickhouse/clickhouse.yml
+  - ./services/minio/minio.yml
