@@ -1,0 +1,15 @@
+services:
+  create-langfuse-buckets:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_healthy
+    command: >
+      sh -c "
+        mc alias set myminio http://${MINIO_HOST}:${MINIO_S3_PORT} ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD} &&
+        mc mb myminio/${LANGFUSE_S3_BATCH_EXPORT_BUCKET}/${LANGFUSE_S3_BATCH_EXPORT_PREFIX} &&
+        mc mb myminio/${LANGFUSE_S3_MEDIA_UPLOAD_BUCKET}/${LANGFUSE_S3_MEDIA_UPLOAD_PREFIX} &&
+        mc mb myminio/${LANGFUSE_S3_EVENT_UPLOAD_BUCKET}/${LANGFUSE_S3_EVENT_UPLOAD_PREFIX}
+      "
+    networks:
+      - homeserver-network

@@ -1,0 +1,3 @@
+include:
+  - ./buckets.yml
+  - ./worker.yml

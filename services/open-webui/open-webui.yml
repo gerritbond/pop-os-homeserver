@@ -1,7 +1,6 @@
 services:
   open-webui:
     image: ghcr.io/open-webui/open-webui:ollama
-    container_name: open-webui
     restart: always
     ports:
       - ${OPEN_WEBUI_PORT:-3000}:8080
@@ -11,7 +10,7 @@ services:
       - DEFAULT_USER_ROLE=${OPEN_WEBUI_DEFAULT_USER_ROLE}
       - ENABLE_SIGNUP=${OPEN_WEBUI_ENABLE_SIGNUP}
       - ENABLE_LOGIN_FORM=${OPEN_WEBUI_ENABLE_LOGIN_FORM}
-      - DATABASE_URL=${OPEN_WEBUI_DATABASE_URL}
+      - DATABASE_URL=postgresql://${DB_4_USER}:${DB_4_PASSWORD}@postgres:${POSTGRES_PORT}/${DB_4_NAME}
     volumes:
       - open-webui:/app/backend/data
     networks:
